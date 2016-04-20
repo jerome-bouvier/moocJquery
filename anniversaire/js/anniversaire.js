@@ -1,14 +1,14 @@
 $(function () {
-    var $bouton = $('#special');
-    var i = 0;
-    $bouton.on("click", function () {
+    var i = 1;
+    $('#special').on("click", function () {
+        $("li").eq(1).css("visibility", "visible");
+    });
+
+    $("ul#messages li").on("click", function () {
         i++;
-        if (i <= 4) {
-            console.log("Clic " + i + " fois");
-            $("li").eq(i).css("visibility", "visible");
-            if (i === 4) {
-                $("ul#messages li").text("HAPPY BIRTHDAY");
-            }
-        };
+        $("li").eq(i).css("visibility", "visible");
+        if (i === 4) {
+            $("ul#messages li").text("HAPPY BIRTHDAY");
+        }
     });
 });
