@@ -26,6 +26,17 @@ li {
     margin-bottom: 10px;
 }
 
-.message {
+.message1 {
     visibility: hidden;
+    background-color: burlywood;
+}
+
+.message2 {
+    visibility: hidden;
+    background-color: chartreuse;
+}
+
+.message3 {
+    visibility: hidden;
+    background-color: coral;
 }
