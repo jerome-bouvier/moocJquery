@@ -1,5 +1,9 @@
-var $bouton = $("#mainItem");
+$(function() {
+	var $bouton = $('#mainItem');
 
-function display() {
-    $bouton.on("click", )
-}
+	$bouton.on("click", function() {
+		var $cible = $('#firstMessage');
+		console.log("Clic");
+		$cible.css = ("visibility", "visible");
+	});
+});
