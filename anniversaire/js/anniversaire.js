@@ -9,6 +9,8 @@ $(function () {
         $("li").eq(i).css("visibility", "visible");
         if (i === 4) {
             $("ul#messages li").text("HAPPY BIRTHDAY");
+            $("body").css("background-image", "url");
+            $("sound").play();
         }
     });
 });
