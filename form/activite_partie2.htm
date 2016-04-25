@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            margin: 0;
+        }
+        
+        #gauche {
+            float: left;
+            width: 70%;
+            height: 1000px;
+            background-color: #EFECCA;
+        }
+        
+        #droite {
+            background-color: #CEFFF8;
+            height: 1000px;
+            padding: 10px;
+            padding-left: 71%;
+        }
+        
+        #saisieL {
+            visibility: hidden;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div id="gauche">
+    </div>
+
+    <div id="droite">
+        Utilisez ces boutons pour créer votre formulaire
+        <br>
+        <br>
+        <button>Label</button>
+        <button>Zone de texte</button>
+        <button>Bouton</button>
+        <hr>
+        <div id="saisieL">
+            <span>Texte du label</span>
+            <input id="textL" type=text placeholder="votre texte ici"></input>
+            <button id="ok">OK</button>
+        </div>
+    </div>
+
+    <script src="jquery-1.12.3.min.js"></script>
+    <script>
+        // affichage de la zone de saisie label 
+        $(function() {
+            $('button:first').on('click', function() {
+                $('#saisieL').css('visibility', 'visible');
+            });
+        });
+
+        //ajout du label
+        $(function() {
+            $('#ok').on('click', function() {
+                var labelSaisi = $('#textL').val();
+                console.log(labelSaisi);
+                $('#gauche').append("<span>" + labelSaisi + "</span>");
+                $('#textL').val("");
+                $('#saisieL').css('visibility', 'hidden');
+            });
+        });
+
+        //ajout du input
+
+        //ajout du bouton
+
+    </script>
+</body>
+
+</html>
