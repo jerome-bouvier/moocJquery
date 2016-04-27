@@ -29,6 +29,7 @@
         input {
             margin: 10px;
         }
+
     </style>
 </head>
 
@@ -49,59 +50,58 @@
 
     <script src="jquery-1.12.3.min.js"></script>
     <script>
-        $(function () {
-
-            $('button').on('click', function () {
+        $(function() {
+            //ajout des zones
+            $('button').on('click', function() {
 
                 //détermine le bouton cliqué
                 var $index = $('button').index(this);
 
-                if ($index === 0) {
-                    //affichage de la zone de saisie du label
-                    $('#droite').append('<span>Texte du label</span><input id="textL" type=text placeholder="votre texte ici"></input><button id="ok">OK</button><br>');
+                switch ($index) {
+                    case 0:
+                        //affichage de la zone de saisie du label + class label
+                        $('#droite').append('<span class="label">Texte du label</span><input id="textL" type=text placeholder="votre texte ici" class="label"></input><button id="ok" class="label">OK</button><br class="label">');
+                        break;
 
-                } else if ($index === 1) {
+                    case 1:
+                        //affichage de la zone de saisie de l'input + class input
+                        $('#droite').append('<span class="input">id de la zone de texte</span><input id="textZ" type=text class="input"></input><button id="okZ" class="input">OK</button><br class="input">');
+                        break;
 
-                    //affichage de la zone de saisie de l'input
-                    $('#droite').append('<span>id de la zone de texte</span><input id="textZ" type=text></input><button id="okZ">OK</button><br>');
-                } else if ($index === 2) {
+                    case 2:
+                        //affichage de la zone de saisie du bouton + class btn
+                        $('#droite').append('<span class="btn">Texte du bouton</span><input id="textB" type=text class="btn"></input><button id="okB" class="btn">OK</button><br class="btn">');
+                        break;
+                }
 
-                    //affichage de la zone de saisie du bouton
-                    $('#droite').append('<span>Texte du bouton</span><input id="textB" type=text></input><button id="okB">OK</button><br>');
+                //ajout du label à gauche et remove sur clic
+                $('button.label').on('click', function() {
+                    var $labelSaisi = $('#textL').val();
+                    $('#gauche').append('<span>' + $labelSaisi + '</span>');
+                    $('#textL').val('');
+                    $('.label').remove();
+                });
 
-                } else {
-                    //ajout du label
-                    $('#ok').on('click', function () {
-                        var $labelSaisi = $('#textL').val();
-                        console.log($labelSaisi);
-                        $('#gauche').append('<span>' + $labelSaisi + '</span>');
-                        $('#textL').val('');
-                        $('#saisieL').css('visibility', 'collapse');
-                    });
+                // ajout du input à gauche et remove sur clic
+                $('button.input').on('click', function() {
+                    var $idSaisi = $('#textZ').val();
+                    $('#gauche').append('<input id="' + $idSaisi + ' type="text"></input>');
+                    $('#gauche').append('<br>');
+                    $('#textZ').val('');
+                    $('.input').remove();
+                });
 
-                    // ajout du input
-                    $('#okZ').on('click', function () {
-                        var $idSaisi = $('#textZ').val();
-                        console.log($idSaisi);
-                        $('#gauche').append('<input id="' + $idSaisi + ' type="text"></input>');
-                        $('#gauche').append('<br>');
-                        $('#textZ').val('');
-                        $('#saisieZ').css('visibility', 'collapse');
-                    });
-
-                    // ajout du bouton
-                    $('#okB').on('click', function () {
-                        var $boutonSaisi = $('#textB').val();
-                        console.log($boutonSaisi);
-                        $('#gauche').append('<button>' + $boutonSaisi + '</button>');
-                        $('#textB').val('');
-                        $('#gauche').append('<br>');
-                        $('#saisieB').css('visibility', 'collapse');
-                    });
-
-                };
+                // ajout du bouton à gauche et remove sur clic
+                $('button.btn').on('click', function() {
+                    var $boutonSaisi = $('#textB').val();
+                    $('#gauche').append('<button>' + $boutonSaisi + '</button>');
+                    $('#textB').val('');
+                    $('#gauche').append('<br>');
+                    $('.btn').remove();
+                });
             });
         });
+
     </script>
 </body>
 
