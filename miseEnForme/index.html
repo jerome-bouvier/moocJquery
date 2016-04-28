@@ -157,9 +157,15 @@
             });
 
             //modification de la police de la 1ere phrase
-            $('#police-prem-phrase').change(function () {
-                var $policePremChoisie = $(this).val();
-                $('p:first').css('font-family', $policePremChoisie);
+            $('#prem-car-phrase').change(function () {
+                var $policePremChoisie = $('#prem-car-phrase option:selected').index();
+                var $premier = $('p').charAt(0);
+                if ($policePremChoisie === 0) {
+                    $premier.css('font-style', 'normal');
+                } else {
+                    $premier.css('font-weight', 'bold');
+                }
+
             });
         });
     </script>
