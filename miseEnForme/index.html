@@ -131,27 +131,36 @@
                 });
             });
 
-            //modification de l'attribut de la police
+            //modification de l'attribut du texte
             $('#texte').change(function () {
                 var $style = $('#texte option:selected').index();
-                console.log($style);
                 switch ($style) {
                 case 0:
-                    $('p').attr('font-style', 'normal');
+                    $('p').css('font-style', 'normal');
                     break;
                 case 1:
-                    $('p').attr('font-style', 'bold');
+                    $('p').css('font-weight', 'bold');
                     break;
                 case 2:
-                    $('p').attr('font-style', 'italic');
+                    $('p').css('font-style', 'italic');
                     break;
                 case 3:
-                    $('p').attr('font-style', 'strike');
+                    $('p').css('texte-decoration', 'underline');
                     break;
                 }
             });
 
+            //modification de la police du texte
+            $('#police').change(function () {
+                var $policeChoisie = $(this).val();
+                $('p').css('font-family', $policeChoisie);
+            });
 
+            //modification de la police de la 1ere phrase
+            $('#police-prem-phrase').change(function () {
+                var $policePremChoisie = $(this).val();
+                $('p:first').css('font-family', $policePremChoisie);
+            });
         });
     </script>
 </body>
