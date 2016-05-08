@@ -27,8 +27,12 @@
         input {
             margin: 10px;
         }
+        
+        .shadow {
+            box-shadow: 10px 10px 5px #888;
+        }
     </style>
-    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
 </head>
 
 <body>
@@ -46,36 +50,92 @@
     <script>
         $(function () {
 
+            //affichage de l'ombre avec la classe shadow sur un bouton
+            $(':enabled').on('mouseover', function () {
+                $(this).toggleClass('shadow');
+            }).on('mouseleave', function () {
+                $(this).toggleClass('shadow');
+            });
+
             $('#btn1').click(function () {
-                $('hr').after('<div id="conteneur">Texte du label <input type="text" id="tex"><button id="btnok">OK</button></div>');
+                //désativation des boutons formulaires
+                $(':button').prop('disabled', true);
+
+                $('hr').after('<div id="conteneur">Texte du label <input type="text" id="tex"><button id="btnok">OK</button><button id="btnCancel">Annuler</button></div>');
+
                 $('#btnok').click(function () {
                     var lid = '<span>' + $('#tex').val() + '</span>';
-                    $('#gauche').append(lid).fadeIn(5000);
-                    $('#conteneur').fadeOut(5000);
-                    $('#conteneur').remove();
+                    $('#gauche').fadeIn(500, function () {
+                        $(this).append(lid);
+                    });
+                    $('#conteneur').fadeOut(500, function () {
+                        $(this).remove();
+                    });
+                    $(':button').prop('disabled', false);
+                });
+
+                //ajout du bouton annuler & ré-activation des boutons formulaires
+                $('#btnCancel').click(function () {
+                    $('#conteneur').fadeOut(500, function () {
+                        $(this).remove();
+                    });
+                    $(':button').prop('disabled', false);
                 });
             });
 
             $('#btn2').click(function () {
-                $('hr').after('<div id="conteneur">id de la zone de texte <input type="text" id="tex"><button id="btnok">OK</button></div>');
+
+                //désativation des boutons formulaires
+                $(':button').prop('disabled', true);
+
+                $('hr').after('<div id="conteneur">id de la zone de texte <input type="text" id="tex"><button id="btnok">OK</button><button id="btnCancel">Annuler</button></div>');
+
                 $('#btnok').click(function () {
                     var lid = '<input type="text" id="' + $('#tex').val() + '"><br>';
-                    $('#gauche').append(lid).fadeIn(5000);
-                    $('#conteneur').fadeOut(5000);
-                    $('#conteneur').remove();
+                    $('#gauche').fadeIn(500, function () {
+                        $(this).append(lid);
+                    });
+                    $('#conteneur').fadeOut(300, function () {
+                        $(this).remove();
+                    });
+                    $(':button').prop('disabled', false);
+                });
+
+                //ajout du bouton annuler & ré-activation des boutons formulaires
+                $('#btnCancel').click(function () {
+                    $('#conteneur').fadeOut(500, function () {
+                        $(this).remove();
+                    });
+                    $(':button').prop('disabled', false);
                 });
             });
 
             $('#btn3').click(function () {
-                $('hr').after('<div id="conteneur">Texte du bouton <input type="text" id="tex"><button id="btnok">OK</button></div>');
+
+                //désativation des boutons formulaires
+                $(':button').prop('disabled', true);
+
+                $('hr').after('<div id="conteneur">Texte du bouton <input type="text" id="tex"><button id="btnok">OK</button><button id="btnCancel">Annuler</button></div>');
+
                 $('#btnok').click(function () {
                     var lid = '<button>' + $('#tex').val() + '</button>';
-                    $('#gauche').append(lid).fadeIn(5000);
-                    $('#conteneur').fadeOut(5000);
-                    $('#conteneur').remove();
+                    $('#gauche').fadeIn(500, function () {
+                        $(this).append(lid);
+                    });
+                    $('#conteneur').fadeOut(500, function () {
+                        $(this).remove();
+                    });
+                    $(':button').prop('disabled', false);
+                });
+
+                //ajout du bouton annuler & ré-activation des boutons formulaires
+                $('#btnCancel').click(function () {
+                    $('#conteneur').fadeOut(500, function () {
+                        $(this).remove();
+                    });
+                    $(':button').prop('disabled', false);
                 });
             });
-
         });
     </script>
 </body>
