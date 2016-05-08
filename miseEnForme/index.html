@@ -42,6 +42,7 @@
             padding-right: 5px;
             font-family: 'Times New Roman';
         }
+
     </style>
 </head>
 
@@ -121,53 +122,88 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
     <script>
-        $(document).ready(function () {
+        $(document).ready(function() {
 
             //changement de couleur de fond body
-            $('#couleur-fond').change(function () {
+            $('#couleur-fond').change(function() {
                 var $couleurChoisie = $(this).val();
-                $('body').fadeOut(1000, function () {
+                $('body').fadeOut(1000, function() {
                     $(this).css('background-color', $couleurChoisie).fadeIn(1000);
                 });
             });
 
             //modification de l'attribut du texte
-            $('#texte').change(function () {
+            $('#texte').change(function() {
                 var $style = $('#texte option:selected').index();
                 switch ($style) {
-                case 0:
-                    $('p').css('font-style', 'normal');
-                    break;
-                case 1:
-                    $('p').css('font-weight', 'bold');
-                    break;
-                case 2:
-                    $('p').css('font-style', 'italic');
-                    break;
-                case 3:
-                    $('p').css('texte-decoration', 'underline');
-                    break;
+                    case 0:
+                        $('p').css('font-style', 'normal');
+                        break;
+                    case 1:
+                        $('p').css('font-weight', 'bold');
+                        break;
+                    case 2:
+                        $('p').css('font-style', 'italic');
+                        break;
+                    case 3:
+                        $('p').css('texte-decoration', 'underline');
+                        break;
                 }
             });
 
             //modification de la police du texte
-            $('#police').change(function () {
+            $('#police').change(function() {
                 var $policeChoisie = $(this).val();
                 $('p').css('font-family', $policeChoisie);
             });
 
             //modification de la police de la 1ere phrase
-            $('#prem-car-phrase').change(function () {
-                var $policePremChoisie = $('#prem-car-phrase option:selected').index();
-                var $premier = $('p').charAt(0);
-                if ($policePremChoisie === 0) {
-                    $premier.css('font-style', 'normal');
+            $('#police-prem-phrase').change(function() {
+                var $policePremChoisie = $(this).val();
+                $('p:first').css('font-family', $policePremChoisie);
+
+            });
+
+            //modif police du 1er car
+            $('#prem-car-phrases').change(function() {
+                var $styleCar = $('#prem-car-phrases option:selected').index();
+                console.log($styleCar);
+                var $firstL = $('p:first-letter');
+                if ($styleCar === 0) {
+                    $firstL.before('<span>').after('</span>')
+                    $('span').addClass('firstLetter');
+                    $('span').css('font-style', 'normal');
                 } else {
-                    $premier.css('font-weight', 'bold');
+                    $firstL.before('<span>').after('</span>')
+                    $('span').addClass('firstLetter');
+                    $('span').css('font-weight', 'bold');
                 }
 
             });
+
+            //mot en rouge
+            $('#couleurMot').on('click', function() {
+                var $position = $('#mot').val();
+                var $leTexte = $('p').val();
+                var $carPimp = $leTexte.charAt($position);
+                console.log($carPimp);
+
+            });
+
+            //RAZ
+            function cleanForm() {
+                $(':input')
+                    .not(':button, :submit, :reset, :hidden')
+                    .val('')
+                    .prop('checked', false)
+                    .prop('selected', false);
+            };
+
+            $('#raz').click(cleanForm());
+
+
         });
+
     </script>
 </body>
 
