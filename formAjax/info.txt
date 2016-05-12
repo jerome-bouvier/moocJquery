@@ -1,0 +1,5 @@
+<p id="msgLabel">Utilsez la zone de texte pour définir le texte à insérer dans le label, puis cliquez sur <b>OK</b> pour l'afficher dans la partie gauche de la page ou sur <b> Annuler</b> pour annuler l'insertion.</p>
+
+<p id="msgInput">Utilsez la zone de texte pour définir l'id de la zone de texte, puis cliquez sur <b>OK</b> pour l'afficher dans la partie gauche de la page ou sur <b> Annuler</b> pour annuler l'insertion.</p>
+
+<p id="msgBouton">Utilsez la zone de texte pour définir le libellé du bouton, puis cliquez sur <b>OK</b> pour l'afficher dans la partie gauche de la page ou sur <b> Annuler</b> pour annuler l'insertion.</p>
